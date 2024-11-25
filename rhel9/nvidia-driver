@@ -97,7 +97,7 @@ _install_prerequisites() (
 
     echo "Installing elfutils..."
     if ! dnf install -q -y elfutils-libelf-$ELFUTILS_VERSION.$DRIVER_ARCH elfutils-libelf-devel-$ELFUTILS_VERSION.$DRIVER_ARCH; then
-        echo "FATAL: failed to install elfutils packages. RHEL entitlement may be improperly deployed."
+        echo "FATAL: failed to install elfutils packages. This may be because elfutils-libelf-$ELFUTILS_VERSION.$DRIVER_ARCH and/or elfutils-libelf-devel-$ELFUTILS_VERSION.$DRIVER_ARCH are not available"
         exit 1
     fi
 
