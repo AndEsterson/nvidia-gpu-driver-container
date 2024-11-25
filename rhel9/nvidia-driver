@@ -17,6 +17,7 @@ USE_HOST_MOFED="${USE_HOST_MOFED:-false}"
 DNF_RELEASEVER=${DNF_RELEASEVER:-""}
 RHEL_VERSION=${RHEL_VERSION:-""}
 RHEL_MAJOR_VERSION=9
+ELFUTILS_VERSION="0.188-3.el9"
 
 OPEN_KERNEL_MODULES_ENABLED=${OPEN_KERNEL_MODULES_ENABLED:-false}
 [[ "${OPEN_KERNEL_MODULES_ENABLED}" == "true" ]] && KERNEL_TYPE=kernel-open || KERNEL_TYPE=kernel
@@ -95,7 +96,7 @@ _install_prerequisites() (
     cd ${tmp_dir}
 
     echo "Installing elfutils..."
-    if ! dnf install -q -y elfutils-libelf.$DRIVER_ARCH elfutils-libelf-devel.$DRIVER_ARCH; then
+    if ! dnf install -q -y elfutils-libelf-$ELFUTILS_VERSION.$DRIVER_ARCH elfutils-libelf-devel-$ELFUTILS_VERSION.$DRIVER_ARCH; then
         echo "FATAL: failed to install elfutils packages. RHEL entitlement may be improperly deployed."
         exit 1
     fi
