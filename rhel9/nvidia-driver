@@ -128,7 +128,7 @@ _install_prerequisites() (
       fi
     fi
 
-    echo "Installing Linux kernel headers..."
+    echo "Installing Linux kernel headers for kernel version $KERNEL_VERSION..."
     dnf -q -y --releasever=${DNF_RELEASEVER} install kernel-headers-${KERNEL_VERSION} kernel-devel-${KERNEL_VERSION} > /dev/null
     ln -s /usr/src/kernels/${KERNEL_VERSION} /lib/modules/${KERNEL_VERSION}/build
 
