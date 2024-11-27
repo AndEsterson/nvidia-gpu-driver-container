@@ -108,4 +108,7 @@ RUN if [ -n "${CVE_UPDATES}" ]; then \
 # Remove cuda repository to avoid GPG errors
 RUN rm -f /etc/yum.repos.d/cuda.repo
 
+# Hack: set releasever to 9.4
+RUN echo '9.4' > /etc/dnf/vars/releasever && yum clean all
+
 ENTRYPOINT ["nvidia-driver", "init"]
